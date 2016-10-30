@@ -20,8 +20,7 @@ public class ShowCrawler {
         try {
             Document doc = Jsoup.connect(URL).get();
             Elements elements = doc.select("div#leftandright li a");
-            List<String> shows = elements.stream().skip(1).map(e -> e.text()).collect(Collectors.toList());
-            return shows;
+            return elements.stream().skip(1).map(e -> e.text()).collect(Collectors.toList());
         } catch (IOException e) {
             throw new RuntimeException("Oops.. cannot load available shows", e);
         }
