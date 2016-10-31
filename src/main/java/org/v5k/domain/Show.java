@@ -1,12 +1,13 @@
 package org.v5k.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
-@Entity(name = "SHOWS")
+@Entity()
+@Table(
+        name = "SHOWS",
+        uniqueConstraints = @UniqueConstraint(name = "SHOW_UNIQUE", columnNames = {"SHOW"})
+)
 public class Show {
 
     @Id
@@ -18,9 +19,6 @@ public class Show {
     private String show;
 
     @Column
-    private Long season;
-
-    @Column
     private Boolean active;
 
     @Column
@@ -30,16 +28,18 @@ public class Show {
 
     }
 
+    public Show(String name) {
+        this.show = name;
+        this.active = true;
+        this.added = new Date();
+    }
+
     public Long getId() {
         return id;
     }
 
     public String getShow() {
         return show;
-    }
-
-    public Long getSeason() {
-        return season;
     }
 
     public Boolean getActive() {

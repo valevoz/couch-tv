@@ -24,4 +24,8 @@ public class ShowService {
     public List<String> availableShows() {
         return crawler.availableShows();
     }
+
+    public Show subscribe(String name) {
+        return showRepository.save(new Show(name));
+    }
 }

@@ -8,7 +8,7 @@ spring:
     database: POSTGRESQL
     show-sql: true
     hibernate:
-      ddl-auto: auto
+      ddl-auto: create-drop
   jersey:
     applicationPath: /shows
     type: filter
